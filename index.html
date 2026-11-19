@@ -1,137 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- SEO Title -->
+    <title>Photo Gallery | Фотогалерея Минска</title>
+    <!-- SEO Description -->
+    <meta name="description" content="A photo gallery with high-quality photos of Minsk and Belarus landmarks. Фотогалерея с качественными фото достопримечательностей и пейзажей Минска.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
         body {
-            background-color: #1a1a1a;
-            color: #eee;
-            font-family: system-ui, sans-serif;
-            padding: 40px 20px;
+            background-color: #f4f4f4;
+            padding: 30px 15px;
         }
         header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 40px;
         }
         h1 {
-            font-size: 36px;
-            margin-bottom: 12px;
+            color: #222;
+            margin-bottom:10px;
         }
-        .desc {
-            color: #aaa;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto;
+        .subtext {
+            color:#666;
+            font-size:16px;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .gallery-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
         }
-        .card {
-            background: #272727;
-            border-radius: 12px;
+        .photo-card {
+            background: #fff;
+            border-radius: 10px;
             overflow: hidden;
-            transition: 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease;
             cursor: pointer;
         }
-        .card:hover {
+        .photo-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.4);
         }
-        .card img {
+        .photo-card img {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            display: block;
+            display:block;
         }
         .card-text {
-            padding: 14px;
+            padding:14px;
         }
         .card-text h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
+            font-size:17px;
+            margin-bottom:6px;
+            color:#333;
         }
         .card-text p {
-            font-size: 13px;
-            color: #aaa;
+            font-size:14px;
+            color:#777;
         }
-
-        /* Lightbox for zoom */
+        /* 放大弹窗 */
         .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            padding: 20px;
-        }
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 8px;
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.85);
+            z-index:999;
+            align-items:center;
+            justify-content:center;
         }
         .lightbox.active {
-            display: flex;
+            display:flex;
+        }
+        .lightbox img {
+            max-width:90%;
+            max-height:90%;
+        }
+        .close-btn {
+            position:absolute;
+            top:20px;
+            right:30px;
+            color:white;
+            font-size:36px;
+            cursor:pointer;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>My Photo Gallery</h1>
-        <p class="desc">Browse my collection of photos. Click any image to view it in full size.</p>
+        <h1>Photo Gallery / Фотогалерея</h1>
+        <p class="subtext">Photos of Minsk and Belarus scenery | Фото пейзажей и достопримечательностей Минска</p>
     </header>
 
-    <div class="gallery">
-        <div class="card" onclick="openLightbox('images/pic1.jpg')">
-            <img src="images/pic1.jpg" alt="Landscape">
+    <div class="gallery-container">
+        <!-- 图片1 alt带SEO关键词 -->
+        <div class="photo-card" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="minsk1.jpg" alt="Scenery photo of Minsk city | Фото пейзажа города Минска">
             <div class="card-text">
-                <h3>Landscape</h3>
-                <p>Natural scenery shot</p>
+                <h3>Minsk City View / Вид Минска</h3>
+                <p>City landscape photo | Городской пейзаж</p>
             </div>
         </div>
-        <div class="card" onclick="openLightbox('images/pic2.jpg')">
-            <img src="images/pic2.jpg" alt="Still Life">
+        <!-- 图片2 alt带SEO关键词 -->
+        <div class="photo-card" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="minsk2.jpg" alt="Landmark photo of Minsk | Фото достопримечательности Минска">
             <div class="card-text">
-                <h3>Still Life</h3>
-                <p>Daily snapshots</p>
+                <h3>Minsk Landmark / Достопримечательность Минска</h3>
+                <p>Famous attraction | Знаменитое место</p>
             </div>
         </div>
-        <div class="card" onclick="openLightbox('images/pic3.jpg')">
-            <img src="images/pic3.jpg" alt="City View">
+        <!-- 图片3 alt带SEO关键词 -->
+        <div class="photo-card" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="belarus1.jpg" alt="Belarus landscape photo | Фото пейзажа Беларуси">
             <div class="card-text">
-                <h3>City Scene</h3>
-                <p>Evening in the city</p>
+                <h3>Belarus Scenery / Пейзаж Беларуси</h3>
+                <p>Nature picture | Природа Беларуси</p>
+            </div>
+        </div>
+        <!-- 图片4 alt带SEO关键词 -->
+<div class="photo-card" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="minsk3.jpg" alt="High quality photo of Minsk | Высококачественное фото Минска">
+            <div class="card-text">
+                <h3>High Quality Photo / Качественное фото</h3>
+                <p>Clear city shot | Четкий снимок города</p>
             </div>
         </div>
     </div>
 
-    <div class="lightbox" id="lb" onclick="closeLightbox()">
-        <img id="lb-img" src="">
+    <!-- 放大弹窗 -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">×</span>
+        <img id="lightbox-img" src="" alt="Enlarged photo">
     </div>
 
-    <script>
-        function openLightbox(src) {
-            document.getElementById("lb-img").src = src;
-            document.getElementById("lb").classList.add("active");
-        }
-        function closeLightbox() {
-            document.getElementById("lb").classList.remove("active");
-        }
-    </script>
+<script>
+function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+}
+</script>
 </body>
 </html>
